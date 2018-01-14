@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.ych</groupId>
+  <artifactId>shop</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>${project.artifactId}</name>
+  <description>shop</description>
+  <modules>
+    <module>shop-service-user-api</module>
+  </modules>
+  
+  <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.4.RELEASE</version>
+        <relativePath/>
+    </parent>
+  
+    <properties>
+    	<java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    
+    <profiles>
+    	<profile>
+    		<id>nexus</id>
+    		<repositories>
+    			<repository>
+		              <id>maven-proxy-releases</id>
+		              <url>http://localhost:8081/repository/maven-proxy-releases/</url>
+		              <releases><enabled>true</enabled></releases>
+		              <snapshots><enabled>false</enabled></snapshots>
+		         </repository>
+		         <repository>
+		              <id>maven-proxy-snapshots</id>
+		              <url>http://localhost:8081/repository/maven-proxy-snapshots/</url>
+		              <releases><enabled>false</enabled></releases>
+		              <snapshots><enabled>true</enabled></snapshots>
+            		</repository>
+    		</repositories>	
+    		
+    		 <pluginRepositories>
+    			 <pluginRepository>
+		            <id>maven-proxy-releases</id>
+		            <url>http://localhost:8081/repository/maven-proxy-releases/</url>
+		            <releases><enabled>true</enabled></releases>
+		            <snapshots><enabled>false</enabled></snapshots>
+		          </pluginRepository>
+		          <pluginRepository>
+		            <id>maven-proxy-snapshots</id>
+		            <url>http://localhost:8081/repository/maven-proxy-snapshots/</url>
+		            <releases><enabled>false</enabled></releases>
+		            <snapshots><enabled>true</enabled></snapshots>
+		          </pluginRepository>
+    		</pluginRepositories>
+    	</profile>
+    
+    </profiles>
+    
+    
+    <dependencies>
+    		<!-- dubbo -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
+    		</dependency>
+    	
+    	<!-- common util -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+    
+    <!-- mysql -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>5.1.42</version>
+            </dependency>
+    </dependencies>
+    
+    
+  
+</project>
