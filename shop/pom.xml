@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.ych</groupId>
-  <artifactId>shop</artifactId>
+  <artifactId>parent-shop</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>${project.artifactId}</name>
@@ -57,25 +57,35 @@
 		          </pluginRepository>
     		</pluginRepositories>
     	</profile>
-    
+    	
+        <profile>
+            <id>local</id>
+            <properties>
+                <profileActive>local</profileActive>
+                <package.environment>yunwo</package.environment>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <profileActive>dev</profileActive>
+                <package.environment>shop</package.environment>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <profileActive>prod</profileActive>
+                <package.environment>yunwo</package.environment>
+            </properties>
+        </profile>
     </profiles>
     
     
     <dependencies>
-    		<!-- dubbo -->
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>dubbo</artifactId>
-                <version>${dubbo.version}</version>
-    		</dependency>
-    	
-    	<!-- common util -->
-            <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-lang3</artifactId>
-                <version>${commons-lang3.version}</version>
-            </dependency>
-    
     <!-- mysql -->
             <dependency>
                 <groupId>mysql</groupId>

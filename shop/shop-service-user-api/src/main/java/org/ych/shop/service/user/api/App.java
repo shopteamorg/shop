@@ -1,4 +1,4 @@
-package org.shop.service.user.api;
+package org.ych.shop.service.user.api;
 
 /**
  * Hello world!
